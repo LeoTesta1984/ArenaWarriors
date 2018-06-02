@@ -102,7 +102,7 @@ public class WSelectionForm extends javax.swing.JFrame {
         jPanel1Layout.rowHeights = new int[] {0, 5, 0, 5, 0};
         jPanel1.setLayout(jPanel1Layout);
 
-        jButton1.setText("Archer");
+        jButton1.setText("Unit 1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -113,7 +113,7 @@ public class WSelectionForm extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         jPanel1.add(jButton1, gridBagConstraints);
 
-        jButton3.setText("Dwarf");
+        jButton3.setText("Unit 3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -124,7 +124,7 @@ public class WSelectionForm extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         jPanel1.add(jButton3, gridBagConstraints);
 
-        jButton2.setText("Swordman");
+        jButton2.setText("Unit 2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -155,10 +155,18 @@ public class WSelectionForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                        
-        Warrior warrior = Game.addWarrior(player, "archer");
+
+
+        Warrior warrior;
+                
+        // Adds a new warrior to the list of warriors in game:
+        if(player==0){
+            warrior = Game.addWarrior(player, "swordman");
+        } else {
+            warrior = Game.addWarrior(player, "archer");
+        }
         
+        // Adds the warrior to the table:
         model.addRow(new Object[]{
             warrior.getName(),
             warrior.getType(),
@@ -167,6 +175,18 @@ public class WSelectionForm extends javax.swing.JFrame {
             warrior.getAttackDist(),
             warrior.getDistance()
         });
+        
+        
+        /*Warrior warrior = Game.addWarrior(player, "archer");
+        
+        model.addRow(new Object[]{
+            warrior.getName(),
+            warrior.getType(),
+            warrior.getAttack(),
+            warrior.getDefense(),
+            warrior.getAttackDist(),
+            warrior.getDistance()
+        });*/
                 
                 
         
@@ -194,6 +214,27 @@ public class WSelectionForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        Warrior warrior;
+                
+        // Adds a new warrior to the list of warriors in game:
+        if(player==0){
+            warrior = Game.addWarrior(player, "swordman");
+        } else {
+            warrior = Game.addWarrior(player, "orc");
+        }
+        
+        // Adds the warrior to the table:
+        model.addRow(new Object[]{
+            warrior.getName(),
+            warrior.getType(),
+            warrior.getAttack(),
+            warrior.getDefense(),
+            warrior.getAttackDist(),
+            warrior.getDistance()
+        });
+
+
         //if(player==1){            
             //Archer archer = new Archer("Pepe");
             //model.addRow(new Object[]{name, "archer", 1, 1, 1, 1});

@@ -95,8 +95,8 @@ public class Warrior {
         
         String name="No name";
                
-        name=names[player-1][countNames[player-1]];
-        countNames[player-1]++;
+        name=names[player][countNames[player]];
+        countNames[player]++;
  
         return name;
     }
@@ -108,8 +108,30 @@ public class Warrior {
         
         switch(typeWarrior){
         
+            case "swordman": 
+                warrior = new Swordman(chooseName(player));
+                break;
+                
             case "archer": 
                 warrior = new Archer(chooseName(player));
+                break;
+
+            case "dwarf": 
+                warrior = new Dwarf(chooseName(player));
+                break;
+
+                
+                
+            case "orc": 
+                warrior = new Orc(chooseName(player));
+                break;
+
+            case "goblin": 
+                warrior = new Goblin(chooseName(player));
+                break;
+                
+            case "barbarian": 
+                warrior = new Barbarian(chooseName(player));
                 break;
                 
             default:

@@ -64,8 +64,8 @@ public class Game {
 
         Warrior warrior = Warrior.createWarrior(player, warriorType);
         
-        warriors[player-1][countWarriors[player-1]] = warrior;        
-        countWarriors[player-1]++;
+        warriors[player][countWarriors[player]] = warrior;        
+        countWarriors[player]++;
         
         return warrior;
     }
