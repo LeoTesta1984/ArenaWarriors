@@ -31,12 +31,12 @@ public final class FormArena extends javax.swing.JFrame {
     //ActionListener used for each button:
     private ActionListener actionListener = new ActionListener() {
                     
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        clickButton(e);
-                    }
-                    
-                };    
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            clickButton(e);
+        }
+
+    };    
     
     //Variable which stores original text of each JButton (before placing warriors):
     private String[][] emptys = new String[6][6];
@@ -52,15 +52,45 @@ public final class FormArena extends javax.swing.JFrame {
         assignButtonsToMatrix();
         initializeArena();
         
-        
+        //Warriors adding:
         Warrior[][] warriors = Game.getWarriors();
         
-        Warrior warrior = warriors[0][0];        
-        jButton00.setText(warrior.getName());
+        Warrior warrior;
         
-        warrior = warriors[1][0];
-        jButton05.setText(warrior.getName());
+        //Player 0:
+        warrior = warriors[0][0];
+        if(warrior != null){
+            arena[0][0].setText(warrior.getName());
+            arena[0][0].setForeground(Color.BLACK);
 
+        }
+        
+        warrior = warriors[0][1];
+        if(warrior != null){
+            arena[3][0].setText(warrior.getName());
+        }
+
+        warrior = warriors[0][2];        
+        if(warrior != null){
+            arena[5][0].setText(warrior.getName());
+        }
+
+        //Player 1:
+        warrior = warriors[1][0];
+        if(warrior != null){
+            arena[0][5].setText(warrior.getName());
+            arena[0][5].setForeground(Color.BLACK);
+        }
+        
+        warrior = warriors[1][1];
+        if(warrior != null){
+            arena[3][5].setText(warrior.getName());
+        }
+        
+        warrior = warriors[1][2];
+        if(warrior != null){
+            arena[5][5].setText(warrior.getName());
+        }
     }
 
     /**
@@ -598,8 +628,10 @@ public final class FormArena extends javax.swing.JFrame {
                         
             //buttonClicked1.addActionListener(null);
 
-        } else {
+        } else /*if (buttonClicked_2!=buttonClicked_1)*/{
             buttonClicked_1.setBackground(java.awt.Color.green);
+            buttonClicked_1.setForeground(java.awt.Color.green);
+
             //buttonClicked1 = null;
             //buttonClicked1.addActionListener(actionListener);
             
@@ -629,7 +661,9 @@ public final class FormArena extends javax.swing.JFrame {
                 buttonClicked_2 = null;     
             }
             
-        }
+        } /*else {
+            buttonClicked_1=null;
+        }*/
         
                 
         /*buttonClicked2 = (JButton)actionEvent.getSource();
@@ -712,8 +746,10 @@ public final class FormArena extends javax.swing.JFrame {
 
             buttonClicked_2.setText(buttonClicked_1.getText());        
             buttonClicked_2.setBackground(java.awt.Color.green);
-            
+            buttonClicked_2.setForeground(Color.BLACK);
+
             buttonClicked_1.setText(pos1[0]+""+pos1[1]);    
+            buttonClicked_1.setBackground(java.awt.Color.green);
 
         } else {
             //Distance too far.            
@@ -732,8 +768,8 @@ public final class FormArena extends javax.swing.JFrame {
                 arena[i][j].addActionListener(actionListener);
                 
                 arena[i][j].setText(i+""+j);                
-                arena[i][j].setBackground(Color.GREEN);                
-
+                arena[i][j].setBackground(Color.GREEN);      
+                arena[i][j].setForeground(Color.GREEN);
                 
                 //Saves original text of the buttons:
                 emptys[i][j] = i+""+j;                

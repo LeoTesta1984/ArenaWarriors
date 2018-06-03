@@ -32,15 +32,15 @@ public class WSelectionForm extends javax.swing.JFrame {
         
         model = (DefaultTableModel) jTable1.getModel();    
         
-        if(player==1){        
+        if(player==0){        
             jButton1.setText("Swordman");
             jButton2.setText("Archer");
             jButton3.setText("Dwarf");
         }
-        else if(player==2){        
+        else if(player==1){        
             jButton1.setText("Orc");
-            jButton2.setText("Barbarian");
-            jButton3.setText("Goblin");
+            jButton2.setText("Goblin");
+            jButton3.setText("Barbarian");
         }
                
         
@@ -156,65 +156,6 @@ public class WSelectionForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-
-        Warrior warrior;
-                
-        // Adds a new warrior to the list of warriors in game:
-        if(player==0){
-            warrior = Game.addWarrior(player, "swordman");
-        } else {
-            warrior = Game.addWarrior(player, "archer");
-        }
-        
-        // Adds the warrior to the table:
-        model.addRow(new Object[]{
-            warrior.getName(),
-            warrior.getType(),
-            warrior.getAttack(),
-            warrior.getDefense(),
-            warrior.getAttackDist(),
-            warrior.getDistance()
-        });
-        
-        
-        /*Warrior warrior = Game.addWarrior(player, "archer");
-        
-        model.addRow(new Object[]{
-            warrior.getName(),
-            warrior.getType(),
-            warrior.getAttack(),
-            warrior.getDefense(),
-            warrior.getAttackDist(),
-            warrior.getDistance()
-        });*/
-                
-                
-        
-        /*String name;
-        
-        if(player==1){            
-            name=Warrior.getName(0,countName1);
-            countName1++;
-                        
-            model.addRow(new Object[]{name, "swordman", 1, 1, 1, 1});
-            
-            Warrior warrior= new Warrior(name, "swordman", 1, 1, 1, 1);                
-            Game.addWarrior(warrior, player);
-        }
-        else{
-            name=Warrior.getName(1,countName2);
-            countName2++;
-            
-            model.addRow(new Object[]{name, "orc", 1, 1, 1, 2});
-
-            Warrior warrior= new Warrior(name, "orc", 1, 1, 1, 2);                
-            Game.addWarrior(warrior, player);        
-        }*/
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
         Warrior warrior;
                 
         // Adds a new warrior to the list of warriors in game:
@@ -233,59 +174,52 @@ public class WSelectionForm extends javax.swing.JFrame {
             warrior.getAttackDist(),
             warrior.getDistance()
         });
-
-
-        //if(player==1){            
-            //Archer archer = new Archer("Pepe");
-            //model.addRow(new Object[]{name, "archer", 1, 1, 1, 1});
-        //}
-        //model.addRow(new Object[]{archer.getType(), archer.getAttack(),1,1,1});
-
-        /*String name;
         
-        if(player==1){            
-            name=Warrior.getName(0,countName1);
-            countName1++;
-                        
-            model.addRow(new Object[]{name, "archer", 1, 1, 1, 1});
-            
-            Warrior warrior= new Warrior(name, "archer", 1, 1, 1, 1);                
-            Game.addWarrior(warrior, player);
-        }
-        else{
-            name=Warrior.getName(1,countName2);
-            countName2++;
-            
-            model.addRow(new Object[]{name, "barbarian", 1, 1, 1, 2});
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-            Warrior warrior= new Warrior(name, "barbarian", 1, 1, 1, 2);                
-            Game.addWarrior(warrior, player);
-        }*/        
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        Warrior warrior;
+                
+        // Adds a new warrior to the list of warriors in game:
+        if(player==0){
+            warrior = Game.addWarrior(player, "archer");
+        } else {
+            warrior = Game.addWarrior(player, "goblin");
+        }
+        
+        // Adds the warrior to the table:
+        model.addRow(new Object[]{
+            warrior.getName(),
+            warrior.getType(),
+            warrior.getAttack(),
+            warrior.getDefense(),
+            warrior.getAttackDist(),
+            warrior.getDistance()
+        });
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         
-        /*String name;
-        
-        if(player==1){            
-            name=Warrior.getName(0,countName1);
-            countName1++;
-                        
-            model.addRow(new Object[]{name, "dwarf", 1, 1, 1, 1});
-            
-            Warrior warrior= new Warrior(name, "dwarf", 1, 1, 1, 1);                
-            Game.addWarrior(warrior, player);
+        Warrior warrior;
+                
+        // Adds a new warrior to the list of warriors in game:
+        if(player==0){
+            warrior = Game.addWarrior(player, "dwarf");
+        } else {
+            warrior = Game.addWarrior(player, "barbarian");
         }
-        else{
-            name=Warrior.getName(1,countName2);
-            countName2++;
-            
-            model.addRow(new Object[]{name, "goblin", 1, 1, 1, 2});
-
-            Warrior warrior= new Warrior(name, "goblin", 1, 1, 1, 2);                
-            Game.addWarrior(warrior, player);        
-        }*/
+        
+        // Adds the warrior to the table:
+        model.addRow(new Object[]{
+            warrior.getName(),
+            warrior.getType(),
+            warrior.getAttack(),
+            warrior.getDefense(),
+            warrior.getAttackDist(),
+            warrior.getDistance()
+        });
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -359,7 +293,8 @@ public class WSelectionForm extends javax.swing.JFrame {
             
             Warrior warrior= new Warrior(name, "swordman", 1, 1, 1, 1);                
             Game.addWarrior(warrior, player);
-        }
+        }    public void addWarrior(String typeWarrior, int player){
+
         else{
             name=Warrior.getName(1,countName2);
             countName2++;
