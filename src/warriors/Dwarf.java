@@ -12,7 +12,7 @@ package warriors;
 public class Dwarf extends Warrior {
 
     public Dwarf(String name) {
-        super(name, "dwarf", 2, 3, 0, 0);
+        super(name, "dwarf", 2, 3, 0, 0, "C:\\Users\\Casa\\Documents\\NetBeansProjects\\WarriorsArena_5\\src\\warriors\\images\\archer.png");
     }
     
 }

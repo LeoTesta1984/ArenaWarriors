@@ -17,15 +17,18 @@ public class Warrior {
     private int attackDist;
     private int distance;
     private int life;
+    private String image;
+
     
     private static String[][] names={
         {"Edgar","Tom","Kevin","Susan","Etna","Philip"},
         {"Krog","Kodor","Tork","Empa","Ika","Mork"}
     };
+        
 
     private static int[] countNames={0, 0};
     
-    public Warrior(String name, String type, int attack, int defense, int attackDist, int distance){
+    public Warrior(String name, String type, int attack, int defense, int attackDist, int distance, String image){
         this.name = name;
         this.type = type;
         this.attack = attack;
@@ -87,6 +90,14 @@ public class Warrior {
         return life;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public void setLife(int life) {
         this.life = life;
     }
@@ -133,6 +144,7 @@ public class Warrior {
             case "barbarian": 
                 warrior = new Barbarian(chooseName(player));
                 break;
+                
                 
             default:
                 break;            

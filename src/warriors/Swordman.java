@@ -12,7 +12,7 @@ package warriors;
 public class Swordman extends Warrior {
 
     public Swordman(String name) {
-        super(name, "swordman", 2, 2, 0, 0);
+        super(name, "swordman", 2, 2, 0, 0, "C:\\Users\\Casa\\Documents\\NetBeansProjects\\WarriorsArena_5\\src\\warriors\\images\\archer.png");
     }
     
 }

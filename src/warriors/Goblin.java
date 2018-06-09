@@ -12,7 +12,7 @@ package warriors;
 public class Goblin extends Warrior {
 
     public Goblin(String name) {
-        super(name, "goblin", 1, 1, 2, 2);
+        super(name, "goblin", 1, 1, 2, 2, "C:\\Users\\Casa\\Documents\\NetBeansProjects\\WarriorsArena_5\\src\\warriors\\images\\archer.png");
     }
     
 }

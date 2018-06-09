@@ -628,7 +628,9 @@ public final class FormArena extends javax.swing.JFrame {
                         
             //buttonClicked1.addActionListener(null);
 
-        } else /*if (buttonClicked_2!=buttonClicked_1)*/{
+        } else{
+        
+            //if (buttonClicked_2.equals(buttonClicked_1)){
             buttonClicked_1.setBackground(java.awt.Color.green);
             buttonClicked_1.setForeground(java.awt.Color.green);
 
