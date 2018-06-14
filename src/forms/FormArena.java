@@ -6,10 +6,14 @@
 package forms;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.lang.reflect.Array;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 //import static javafx.scene.paint.Color.color;
 import warriors.Warrior;
@@ -59,10 +63,36 @@ public final class FormArena extends javax.swing.JFrame {
         
         //Player 0:
         warrior = warriors[0][0];
+        
         if(warrior != null){
             arena[0][0].setText(warrior.getName());
             arena[0][0].setForeground(Color.BLACK);
+            
+//            File imageCheck = new File("C:\\Users\\Casa\\Documents\\NetBeansProjects\\WarriorsArena_5\\src\\warriors.images\\archer.png");
+            /*File imageCheck = new File("forms\\archer.png");
 
+            if(imageCheck.exists()) 
+                System.out.println("Image file FOUND!");
+            else 
+                System.out.println("Image file NOT found!");*/
+
+            // ICON PLACING:
+            //a)
+            //String folderName = "D:\\my folder path\\ActualFolderName";
+            //new File(folderName).mkdirs();
+
+            //b)
+            //final String dir = System.getProperty("user.dir");
+            //System.out.println("Current path: "+dir);
+            
+            //c) 
+            //Icon img = new ImageIcon("C:\\Users\\Casa\\Documents\\NetBeansProjects\\WarriorsArena_5\\src\\warriors.images\\archer.png");                
+            //Icon img = new ImageIcon("Source\\ Packages\\images\\archer.png"); 
+            
+            //d)
+            //Image image = new ImageIcon(this.getClass().getResource("/images/bell-icon16.png")).getImage();
+            
+            //arena[0][0].setIcon(img);                
         }
         
         warrior = warriors[0][1];
@@ -617,33 +647,53 @@ public final class FormArena extends javax.swing.JFrame {
 
     public void clickButton(java.awt.event.ActionEvent actionEvent){
         
+        //If player clicks for first time:
         if(buttonClicked_1 == null){
             buttonClicked_1 = (JButton)actionEvent.getSource();
             
+            //If clicks on a something:
             if(!isEmptyButton(buttonClicked_1)){
-                buttonClicked_1.setBackground(java.awt.Color.red);                
+                buttonClicked_1.setBackground(java.awt.Color.red);                  
+            
+            //If clicks on empty cell:
             } else {
                 buttonClicked_1=null;
             }          
                         
             //buttonClicked1.addActionListener(null);
 
+        //If player clicks for second time:
         } else{
         
             //if (buttonClicked_2.equals(buttonClicked_1)){
+            
+            //Button gets deselected:
             buttonClicked_1.setBackground(java.awt.Color.green);
             buttonClicked_1.setForeground(java.awt.Color.green);
 
             //buttonClicked1 = null;
             //buttonClicked1.addActionListener(actionListener);
-            
+                        
             buttonClicked_2 = (JButton)actionEvent.getSource();
             //buttonClicked_2.setBackground(java.awt.Color.red); //It will make nothing. It doesn't have time at all.
 
+            //If second cell clicked is empty:
             if(isEmptyButton(buttonClicked_2)){
-                move();            
+                
+                //Unit moves:
+                move();      
+                
+            //If second cell clicked is not empty:
             } else {
+                
+                //If second cell is not of current player:
                 if(whoIsOwnerOf(buttonClicked_2)!=Game.CURRENT_PLAYER){
+                    
+                    if(distance(buttonPosition(buttonClicked_1), buttonPosition(buttonClicked_2))>1){
+                        attackDistance();
+                    }
+                    
+                    //Unit attacks:
                     attack();
                 }
                 
@@ -907,6 +957,20 @@ public final class FormArena extends javax.swing.JFrame {
     }
     
     
+    private void attackDistance() {
+        
+        if(warriorOfThisButton(buttonClicked_1).getDistance() > 
+            distance(buttonPosition(buttonClicked_1), buttonPosition(buttonClicked_2))){
+        
+            warriorInjured(warriorOfThisButton(buttonClicked_2));
+            
+        }
+        
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     private Warrior warriorOfThisButton(JButton buttonClicked) {
        
         Warrior[][] warriors = Game.getWarriors();
@@ -931,5 +995,30 @@ public final class FormArena extends javax.swing.JFrame {
         
         return null;        
     }  
+
+    private void warriorInjured(Warrior someWarrior) {
+        
+        int W2L = someWarrior.getLife();        
+        W2L--;
+        
+        if(W2L <= 0){
+            
+            buttonClicked_2.setBackground(Color.orange);
+            
+            
+            int[] position_2 = buttonPosition(buttonClicked_2);
+            
+            String newText = position_2[0]+""+position_2[1];
+            
+            buttonClicked_2.setText(newText);
+            
+        } else {            
+            someWarrior.setLife(W2L - 1);
+        }    
+    }
+    
+    
+    
+
 
 } //CLASS END.
